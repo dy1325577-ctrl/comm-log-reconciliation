@@ -1,3 +1,4 @@
+
 # Comm-Log Send Reconciliation
 
 ## Problem
@@ -48,3 +49,4 @@ also goes directly into the submission form. Suggested points to draw from: a cu
 appearing twice under a standalone campaign looked like a duplicate at first glance; a campaign had
 `communication_log` rows already generated before its approval had finalized; retry chains go more
 than one level deep, so a single-hop parent join wasn't sufficient.]
+
