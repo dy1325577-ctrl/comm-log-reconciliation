@@ -44,9 +44,5 @@ print(conn.execute(open("reconciliation.sql").read()).fetchone())
 
 ## Surprises
 
-[Write your own 2-4 sentence paragraph here based on what you actually noticed — this same paragraph
-also goes directly into the submission form. Suggested points to draw from: a customer legitimately
-appearing twice under a standalone campaign looked like a duplicate at first glance; a campaign had
-`communication_log` rows already generated before its approval had finalized; retry chains go more
-than one level deep, so a single-hop parent join wasn't sufficient.]
+[The surprising thing was that a repeated customer entry could mean two different things depending on the situation. For a standalone campaign when the same customer appeared twice that was a separate re-targeting event.. For a retry chain that same customer was simply being tried again and should only be counted once. I also did not expect to see communication_log rows that were already created for a campaign that had not yet cleared approval (creation_status = 'approval_awaiting'). The send pipeline had moved ahead of the approval workflow. A simple query would not have caught that without checking the campaign table. Finally retry chains were not always one step. One retry chain went three levels deep so a simple parent-child join was not enough. I had to walk the chain all the way to its root.]
 
